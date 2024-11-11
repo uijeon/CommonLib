@@ -1,0 +1,15 @@
+﻿<Application x:Class="Jeon.CommonSampleWindow.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Application.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="/Jeon.CommonSampleWindow;Component/Mappings/Generic.xaml"/>
+
+				<!--Resources-->
+				<ResourceDictionary Source="/Jeon.CommonSampleWindow;Component/Resources/Localizations/ResourceMappings.xaml"/>
+				
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Application.Resources>
+</Application>

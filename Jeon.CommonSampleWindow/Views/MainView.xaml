@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="Jeon.CommonSampleWindow.Views.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+			 xmlns:eventToCommand="clr-namespace:Jeon.ViewFramework.EventToCommandParts;assembly=Jeon.ViewFramework"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Jeon.CommonSampleWindow.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="600">
+    <Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="100" />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+		
+		<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+			<Button Height="50" Width="100" Content="Event(Not Arg)" Margin="10" 
+					Command="{Binding EventPopupCommand}" />
+			<Button Height="50" Width="100" Content="Event(Arg)" Margin="10" 
+					Command="{Binding EventPopupCommand}" CommandParameter="받아쓰" />
+			<ComboBox x:Name="xCultureComboBox" Height="30" Width="150" Margin="10" VerticalContentAlignment="Center" 
+					  ItemsSource="{Binding CultureList}" DisplayMemberPath="DisplayName"
+					  SelectedItem="{Binding SelectedCultureItem, Mode=TwoWay}">
+				<i:Interaction.Triggers>
+					<i:EventTrigger EventName="SelectionChanged">
+						<eventToCommand:EventToCommand Command="{Binding SelectCultureCommand}" CommandParameter="{Binding ElementName=xCultureComboBox, Path=SelectedItem}"/>
+					</i:EventTrigger>
+				</i:Interaction.Triggers>
+			</ComboBox>
+		</StackPanel>
+		
+		<Grid Grid.Row="1">
+			<TextBlock Text="{Binding Path=MainText, Source={StaticResource Resource_Main}}" FontWeight="Black" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center" />
+		</Grid>
+	</Grid>
+</UserControl>
